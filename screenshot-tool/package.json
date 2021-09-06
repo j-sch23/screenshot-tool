@@ -6,9 +6,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
+    "@heroicons/react": "^1.0.4",
+    "@tailwindcss/forms": "^0.3.3",
     "capture-website": "^2.0.2",
     "chownr": "^2.0.0",
+    "dateformat": "^4.5.1",
     "express": "^4.17.1",
+    "heroicons": "^1.0.4",
     "jszip": "^3.7.1",
     "next": "latest",
     "puppeteer": "^10.2.0",
