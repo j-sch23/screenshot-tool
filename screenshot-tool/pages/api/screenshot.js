@@ -14,21 +14,30 @@ export default async function screenshotAPI(req, res) {
   });
   const page = await browser.newPage();
   await page.goto(`https://${req.query.url}`, { waitUntil: "networkidle0" });
-  const image = await page.screenshot();
-  await browser.close();
-  if (req.query.zip) {
-    res.setHeader("Content-Type", "application/zip");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename=${dateFormat(now, "isoDateTime")}.zip`
-    );
-    zip.folder("screenshots").file("screenshot.png", image);
+  if (req.query.multiple) {
+    zip.folder("screenshots");
+    for (const device of req.query.devices) {
+      console.log(device)
+      await page.setViewport({
+        width: 1920,
+        height: 1080,
+      });
+      const image = await page.screenshot();
+      zip.file(`${device.name}.png`, image);
+    };
     zip.file("README.md", "This is a sample readme file");
     zip.generateAsync({ type: "base64" }).then((base64) => {
       let zip = Buffer.from(base64, "base64");
       res.end(zip);
     });
+    res.setHeader("Content-Type", "application/zip");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=${dateFormat(now, "isoDateTime")}.zip`
+    );
+    
   } else {
+    const image = await page.screenshot();
     res.setHeader("Content-Type", "image/png");
     res.setHeader(
       "Content-Disposition",
@@ -36,4 +45,5 @@ export default async function screenshotAPI(req, res) {
     );
     res.status(200).send(image);
   }
+  await browser.close();
 }
