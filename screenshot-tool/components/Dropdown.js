@@ -3,28 +3,27 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
 const devices = [
-  { id: 1, device: 'IPhone 6, 6s, 7, 8' },
-  { id: 2, device: 'IPhone 11'},
-  { id: 3, device: 'IPhone 5, 5s, 5c, SE' },
-  { id: 4, device: 'IPhone 11 Pro Max, Xs Max' },
-  { id: 5, device: 'MacBook Pro 15-inch' },
+  { id: 1, device: 'IPhone 6, 6s, 7, 8', width: 1920, height: 1080 },
+  { id: 2, device: 'IPhone 11', width: 1920, height: 1080},
+  { id: 3, device: 'IPhone 5, 5s, 5c, SE', width: 1920, height: 1080 },
+  { id: 4, device: 'IPhone 11 Pro Max, Xs Max', width: 1920, height: 1080 },
+  { id: 5, device: 'MacBook Pro 15-inch', width: 1920, height: 1080 },
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dropdown() {
-  const [selected, setSelected] = useState(devices[3])
+export default function Dropdown(props) {
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={props.value} onChange={(e) => props.update(e, props.index)}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium text-gray-700 mt-2">Device</Listbox.Label>
+          <Listbox.Label className="block text-sm font-medium text-gray-700 mt-2">{props.label}</Listbox.Label>
           <div className="mt-1 relative">
             <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <span className="block truncate">{selected.device}</span>
+              <span className="block truncate">merch</span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
@@ -40,7 +39,7 @@ export default function Dropdown() {
               <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 {devices.map((person) => (
                   <Listbox.Option
-                    key={person.id}
+                    key={devices.id}
                     className={({ active }) =>
                       classNames(
                         active ? 'text-white bg-indigo-600' : 'text-gray-900',
