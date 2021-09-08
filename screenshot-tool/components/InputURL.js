@@ -1,5 +1,5 @@
 
-  export default function Example(props) {
+  export default function InputURL(props) {
     return (
       <div className="flex-grow">
         <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
