@@ -5,6 +5,7 @@ export default function BasicInput(props) {
         {props.label}
       </label>
       <input
+        onChange={(e) => props.update(e.target.value)}
         type="text"
         name="name"
         id="name"
