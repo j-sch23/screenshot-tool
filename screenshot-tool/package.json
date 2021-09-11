@@ -11,6 +11,7 @@
     "@tailwindcss/forms": "^0.3.3",
     "capture-website": "^2.0.2",
     "chownr": "^2.0.0",
+    "cloudinary": "^1.26.3",
     "dateformat": "^4.5.1",
     "express": "^4.17.1",
     "heroicons": "^1.0.4",
