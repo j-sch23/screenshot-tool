@@ -11,7 +11,7 @@ export default function Home() {
   const [height, setHeight] = useState(1080);
   const [width, setWidth] = useState(1920);
   const [query, setQuery] = useState(
-    `${window.location.href}/api/screenshot?url=${url}&width=1920&height=1080`
+    `/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
     id: "iphone6",
