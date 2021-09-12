@@ -97,7 +97,7 @@ export default function Home() {
   };
 
   const assembleQuery = () => {
-    let newQuery = `http://localhost:3000/api/screenshot?url=${url}`;
+    let newQuery = `/api/screenshot?url=${url}`;
     if (deviceToggle) {
       newQuery += `&device=${device.id}`;
     }
