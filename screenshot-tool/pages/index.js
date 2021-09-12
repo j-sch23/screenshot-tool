@@ -14,7 +14,7 @@ export default function Home() {
     `https:localhost:3000/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
-    id: 1,
+    id: "iphone6",
     name: "IPhone 6, 6s, 7, 8",
     width: 414,
     height: 736,
@@ -30,12 +30,22 @@ export default function Home() {
     { id: "iphone6", name: "IPhone 6, 6s, 7, 8", width: 414, height: 736 },
     { id: "iphone11", name: "IPhone 11", width: 1920, height: 1080 },
     { id: "googlepixel", name: "Google Pixel", width: 411, height: 731 },
-    { id: "iphonexsmax", name: "IPhone 11 Pro Max, Xs Max", width: 1920, height: 1080 },
-    { id: "macbookpro15", name: "MacBook Pro 15-inch", width: 1920, height: 1080 },
+    {
+      id: "iphonexsmax",
+      name: "IPhone 11 Pro Max, Xs Max",
+      width: 1920,
+      height: 1080,
+    },
+    {
+      id: "macbookpro15",
+      name: "MacBook Pro 15-inch",
+      width: 1920,
+      height: 1080,
+    },
   ];
   const fileTypes = [
     { id: 1, name: "png" },
-    { id: 2, name: "jpeg" }
+    { id: 2, name: "jpeg" },
   ];
 
   useEffect(() => {
@@ -75,9 +85,11 @@ export default function Home() {
         if (res.ok) {
           setScreenshot(res.url);
         } else {
-          let resjson = await res.json()
-          console.log(res)
-          throw new Error(res.status + ' ' + res.statusText + ' : ' + resjson.error );
+          let resjson = await res.json();
+          console.log(res);
+          throw new Error(
+            res.status + " " + res.statusText + " : " + resjson.error
+          );
         }
       })
       .catch((e) => alert(e));

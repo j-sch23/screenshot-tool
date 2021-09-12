@@ -2,11 +2,10 @@
 const puppeteer = require("puppeteer");
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
-  cloud_name: "dxgbphyhg",
-  api_key: "619665542547417",
-  api_secret: "ubhUuIiHTtjZo9a3UpA_2CGzCG0",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
-let deviceIndex = null;
 const devices = [
   { name: "iphone6", width: 375, height: 667, mobile: true },
   { name: "iphone11", width: 414, height: 896, mobile: true },
@@ -27,11 +26,11 @@ export default async function screenshotAPI(req, res) {
   req.query.enablejs
     ? await page.setJavaScriptEnabled({ enabled: req.query.enablejs })
     : null;
-  deviceIndex = req.query.device ? devices.findIndex(x => x.name === req.query.device) : null;
+  let device = req.query.device ? devices.find(x => x.name === req.query.device) : null;
   await page.setViewport({
-      width: deviceIndex ? devices[deviceIndex].width : parseInt(req.query.width),
-      height: deviceIndex ? devices[deviceIndex].height : parseInt(req.query.height), 
-      isMobile: deviceIndex ? devices[deviceIndex].mobile : false
+      width: device ? device.width : parseInt(req.query.width),
+      height: device ? device.height : parseInt(req.query.height), 
+      isMobile: device ? device.mobile : false
     })
     .then(async () => {
       await page.goto(`https://${req.query.url}`, {
