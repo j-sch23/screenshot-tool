@@ -17,6 +17,7 @@ const devices = [
 
 export default async function screenshotAPI(req, res) {
   const browser = await puppeteer.launch({
+    headless: true,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
