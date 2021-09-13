@@ -11,7 +11,7 @@ export default function Home() {
   const [height, setHeight] = useState(1080);
   const [width, setWidth] = useState(1920);
   const [query, setQuery] = useState(
-    `https://screenshot-tool-kappa.vercel.app/api/screenshot?url=${url}&width=1920&height=1080`
+    `https://screenshotify-api.herokuapp.com/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
     id: "iphone6",
@@ -97,7 +97,7 @@ export default function Home() {
   };
 
   const assembleQuery = () => {
-    let newQuery = `https://screenshot-tool-kappa.vercel.app/api/screenshot?url=${url}`;
+    let newQuery = `https://screenshotify-api.herokuapp.com/api/screenshot?url=${url}`;
     if (deviceToggle) {
       newQuery += `&device=${device.id}`;
     }
@@ -124,7 +124,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
       <Head>
         <title>screenshot tool</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="favicon.ico" />
       </Head>
       <h1 className="text-4xl mb-6 font-semibold text-gray-800">
         Try it out live
