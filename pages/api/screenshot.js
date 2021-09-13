@@ -20,7 +20,6 @@ export default async function screenshotAPI(req, res) {
     headless: true,
     args: [
       '--no-sandbox',
-      '--disable-setuid-sandbox',
     ],
     defaultViewport: {
       width:  1280,
