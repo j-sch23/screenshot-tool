@@ -11,7 +11,7 @@ export default function Home() {
   const [height, setHeight] = useState(1080);
   const [width, setWidth] = useState(1920);
   const [query, setQuery] = useState(
-    `/api/screenshot?url=${url}&width=1920&height=1080`
+    `https://screenshotify.vercel.app/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
     id: "iphone6",
@@ -97,7 +97,7 @@ export default function Home() {
   };
 
   const assembleQuery = () => {
-    let newQuery = `/api/screenshot?url=https://${url}`;
+    let newQuery = `https://screenshotify.vercel.app/api/screenshot?url=https://${url}`;
     if (deviceToggle) {
       newQuery += `&device=${device.id}`;
     }
