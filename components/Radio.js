@@ -28,18 +28,18 @@ export default function Radio(props) {
             <div className="flex items-center h-5">
               <input
                 onChange={(e) => props.update(e.target.id, e.target.checked)}
-                id="discard"
+                id="upload"
                 type="checkbox"
-                checked={props.discard}
+                checked={props.upload}
                 className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
             </div>
             <div className="ml-3 text-sm">
               <label htmlFor="candidates" className="font-medium text-gray-700">
-                Discard
+                Upload
               </label>
               <p id="candidates-description" className="text-gray-500">
-              Returns image but does not save to cloud.
+              Uploads image to cloud and returns url.
               </p>
             </div>
           </div>

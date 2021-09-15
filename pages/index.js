@@ -11,7 +11,7 @@ export default function Home() {
   const [height, setHeight] = useState(1080);
   const [width, setWidth] = useState(1920);
   const [query, setQuery] = useState(
-    `https://screenshotify-api.herokuapp.com/api/screenshot?url=${url}&width=1920&height=1080`
+    `/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
     id: "iphone6",
@@ -19,7 +19,7 @@ export default function Home() {
     width: 414,
     height: 736,
   });
-  const [discard, setDiscard] = useState(false);
+  const [upload, setUpload] = useState(false);
   const [disableJS, setDisableJS] = useState(false);
   const [fullPage, setFullPage] = useState(false);
   const [fileType, setFileType] = useState({ id: 1, name: "png" });
@@ -56,7 +56,7 @@ export default function Home() {
     deviceToggle,
     device,
     url,
-    discard,
+    upload,
     disableJS,
     fullPage,
     fileType,
@@ -64,8 +64,8 @@ export default function Home() {
 
   const updateOptions = (option, bool) => {
     switch (option) {
-      case "discard":
-        setDiscard(bool);
+      case "upload":
+        setUpload(bool);
         break;
       case "disable-js":
         setDisableJS(bool);
@@ -86,9 +86,9 @@ export default function Home() {
           setScreenshot(res.url);
         } else {
           let resjson = await res.json();
-          console.log(res);
+          console.log(resjson);
           throw new Error(
-            res.status + " " + res.statusText + " : " + resjson.error
+            res.status + " " + res.statusText
           );
         }
       })
@@ -97,7 +97,7 @@ export default function Home() {
   };
 
   const assembleQuery = () => {
-    let newQuery = `https://screenshotify-api.herokuapp.com/api/screenshot?url=${url}`;
+    let newQuery = `/api/screenshot?url=https://${url}`;
     if (deviceToggle) {
       newQuery += `&device=${device.id}`;
     }
@@ -110,8 +110,8 @@ export default function Home() {
     if (disableJS) {
       newQuery += "&enablejs=false";
     }
-    if (discard) {
-      newQuery += "&discard=true";
+    if (upload) {
+      newQuery += "&upload=true";
     }
     if (fullPage) {
       newQuery += "&fullpage=true";
@@ -178,7 +178,7 @@ export default function Home() {
               options={fileTypes}
             />
             <Radio
-              discard={discard}
+              upload={upload}
               disableJS={disableJS}
               fullPage={fullPage}
               update={updateOptions}

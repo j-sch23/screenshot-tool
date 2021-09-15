@@ -25,10 +25,27 @@ module.exports = async (req, res) => {
           browser = await playwright.launchChromium({ headless: true })
           const context = await browser.newContext()
           const page = await context.newPage()
-          await page.goto(query.url)
-          const screenshot = await page.screenshot({ type: "png" })
-          res.setHeader("Content-Type", "image/png")
-          res.status(200).send(screenshot)
+          let device = query.device ? devices.find(x => x.name === query.device) : null;
+          await page.setViewportSize({height: (device ? device.height : parseInt(query.height)), width: (device ? device.width : parseInt(query.width))});
+          await page.goto(query.url, {waitUntil: "networkidle0"})
+          const screenshot = await page.screenshot({  
+          type: query.filetype ? req.query.filetype : 'png',
+          fullPage: query.fullpage === 'true' ? true : false })
+          if (query.upload === 'true') {
+          const URI = `data:image/${query.filetype ? query.filetype : 'png'};base64,` + screenshot.toString('base64');
+            await cloudinary.uploader.upload(
+              URI,
+              {
+                overwrite: true,
+              },
+              function (error, result) {      
+                res.status(200).redirect(result.url);
+              }
+            );
+          } else {
+            res.setHeader("Content-Type", "image/png")
+            res.status(200).send(screenshot)
+          }
       } else throw "Please provide a valid url"
   } catch (error) {
       res.status(500).send({
