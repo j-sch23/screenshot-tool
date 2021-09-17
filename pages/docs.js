@@ -1,5 +1,5 @@
 import EndpointList from "../components/EndpointList";
-
+import Head from "next/head";
 const getEndpoints = [
   {
     path: "/screenshot",
@@ -21,7 +21,7 @@ export default function Docs() {
   return (
     <div className="flex flex-col  min-h-screen py-2 bg-gray-50">
        <Head>
-        <title>screenshot tool</title>
+        <title>screenshot tool | docs</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
       <div className="bg-gray-50">
