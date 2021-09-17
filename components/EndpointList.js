@@ -56,7 +56,7 @@ export default function EndpointList (props) {
                      <span>
                       <span className={"text-gray-50 font-medium text-base px-5 py-1 rounded-md " + (props.type === 'GET' ? "bg-blue-500" : "bg-green-500")}>{props.type}</span>
                       <span className="font-medium text-gray-900 mx-2">{endpoint.path}</span>
-                     { window.matchMedia("only screen and (max-width: 760px)").matches ? <br/> : null}
+                     
                       
                       <span className="text-sm mx-1 text-gray-800">{endpoint.short_description}</span>
                       </span>
