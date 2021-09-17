@@ -17,9 +17,13 @@ const putEndpoints= [
   // More questions...
 ];
 
-export default function Example() {
+export default function Docs() {
   return (
     <div className="flex flex-col  min-h-screen py-2 bg-gray-50">
+       <Head>
+        <title>screenshot tool</title>
+        <link rel="icon" href="favicon.ico" />
+      </Head>
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
@@ -28,7 +32,7 @@ export default function Example() {
             </h2>
             <EndpointList type="GET" endpoints={getEndpoints} />
             <EndpointList type="PUT" endpoints={putEndpoints} />
-            
+
           </div>
         </div>
       </div>
