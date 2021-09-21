@@ -34,12 +34,14 @@ module.exports = async (req, res) => {
           if (query.upload === 'true') {
           const URI = `data:image/${query.filetype ? query.filetype : 'png'};base64,` + screenshot.toString('base64');
             await cloudinary.uploader.upload(
+              
               URI,
               {
                 overwrite: true,
               },
-              function (error, result) {      
-                res.status(200).redirect(result.url);
+              function (error, result) {  
+                console.log(result);   
+                res.status(200).redirect(result.secure_url);
               }
             );
           } else {
@@ -50,7 +52,7 @@ module.exports = async (req, res) => {
   } catch (error) {
       res.status(500).send({
           status: "Failed",
-          error,
+          error: error.message,
       })
   } finally {
       if (browser !== null) {
@@ -62,6 +64,7 @@ function isValidUrl(string) {
   try {
       new URL(string)
   } catch (_) {
+    console.log('invalid url')
       return false
   }
   return true
