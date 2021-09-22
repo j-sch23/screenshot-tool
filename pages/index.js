@@ -5,7 +5,6 @@ import InputURL from "../components/InputWithURL";
 import Toggle from "../components/Toggle";
 import BasicInput from "../components/BasicInput";
 import Radio from "../components/Radio";
-import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 export default function Home() {
   const [url, setUrl] = useState("www.example.com");
