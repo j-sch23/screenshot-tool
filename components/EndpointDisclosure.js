@@ -17,11 +17,11 @@ function classNames(...classes) {
 }
 export default function EndpointDisclosure(props) {
   return (
-    <dl className="mt-6">
+    <dl className="mt-4">
         <Disclosure
           as="div"
           className={
-            " py-3 px-4 border rounded-md " +
+            " p-2 border rounded-md " +
             (props.type === "GET"
               ? "bg-blue-50 border-blue-400" : props.type === "DELETE" ? "bg-red-50 border-red-400" :
                "bg-green-50 border-green-400")
