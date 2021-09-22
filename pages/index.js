@@ -5,6 +5,8 @@ import InputURL from "../components/InputWithURL";
 import Toggle from "../components/Toggle";
 import BasicInput from "../components/BasicInput";
 import Radio from "../components/Radio";
+import Header from "../components/Header";
+import Navigation from "../components/Navigation";
 export default function Home() {
   const [url, setUrl] = useState("www.example.com");
   const [screenshot, setScreenshot] = useState(null);
@@ -121,11 +123,13 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
+    <div className="flex flex-col  min-h-screen  bg-gray-50">
+      <Navigation active="Home"/>
       <Head>
-        <title>screenshot tool</title>
+        <title>Screenshotify</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
+      <div className="max-w-6xl mx-auto flex flex-col items-center justify-center py-16">
       <h1 className="text-4xl mb-6 font-semibold text-gray-800">
         Try it out live
       </h1>
@@ -255,6 +259,7 @@ export default function Home() {
               : "Take Screenshot"}
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
