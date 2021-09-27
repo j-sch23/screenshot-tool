@@ -6,7 +6,6 @@ import Link from "next/link";
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Docs', href: '/docs'},
-  { name: 'Demo', href: '/demo' },
 ]
 
 function classNames(...classes) {
