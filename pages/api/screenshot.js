@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
           const screenshot = await page.screenshot({  
           type: query.filetype ? req.query.filetype : 'png',
           fullPage: query.fullpage === 'true' ? true : false })
-          if (query.upload === 'true') {
+          if (query.upload || query.json) {
           const URI = `data:image/${query.filetype ? query.filetype : 'png'};base64,` + screenshot.toString('base64');
             await cloudinary.uploader.upload(
               
@@ -41,7 +41,21 @@ module.exports = async (req, res) => {
               },
               function (error, result) {  
                 console.log(result);   
-                res.status(200).redirect(result.secure_url);
+                if (query.json) {
+                  console.log('merch')
+                  res.setHeader("Content-Type", "application/json")
+                  res.status(200).json({
+                    query,
+                    timestamp: result.created_at,
+                    bytes: result.bytes,
+                    format: result.format,
+                    url: result.secure_url
+                  })
+                }
+                else {
+                 res.status(200).redirect(result.secure_url); 
+                }
+                
               }
             );
           } else {
