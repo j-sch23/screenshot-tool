@@ -11,7 +11,7 @@ export default function Radio(props) {
               name="comments"
               type="checkbox"
               checked={props.fullPage}
-              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+              className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
             />
           </div>
           <div className="ml-3 text-sm">
@@ -31,7 +31,7 @@ export default function Radio(props) {
                 id="upload"
                 type="checkbox"
                 checked={props.upload}
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
             </div>
             <div className="ml-3 text-sm">
@@ -49,20 +49,20 @@ export default function Radio(props) {
             <div className="flex items-center h-5">
               <input
                 onChange={(e) => props.update(e.target.id, e.target.checked)}
-                id="disable-js"
+                id="json"
                 aria-describedby="offers-description"
                 name="offers"
                 type="checkbox"
-                checked={props.disableJS}
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                checked={props.json}
+                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
             </div>
             <div className="ml-3 text-sm">
               <label htmlFor="offers" className="font-medium text-gray-700">
-                Disable JavaScript
+                JSON
               </label>
               <p id="offers-description" className="text-gray-500">
-                Page is rendered without JavaScript enabled.
+                Request returns json response.
               </p>
             </div>
           </div>

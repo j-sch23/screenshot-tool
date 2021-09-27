@@ -6,13 +6,16 @@ import Toggle from "../components/Toggle";
 import BasicInput from "../components/BasicInput";
 import Radio from "../components/Radio";
 import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import Features from "../components/Features";
+import CTA from "../components/CTA";
 export default function Home() {
   const [url, setUrl] = useState("www.example.com");
   const [screenshot, setScreenshot] = useState(null);
   const [height, setHeight] = useState(1080);
   const [width, setWidth] = useState(1920);
   const [query, setQuery] = useState(
-    `/api/screenshot?url=${url}&width=1920&height=1080`
+    `https://screenshotify.vercel.app/api/screenshot?url=${url}&width=1920&height=1080`
   );
   const [device, setDevice] = useState({
     id: "iphone6",
@@ -21,7 +24,7 @@ export default function Home() {
     height: 736,
   });
   const [upload, setUpload] = useState(false);
-  const [disableJS, setDisableJS] = useState(false);
+  const [json, setJson] = useState(false);
   const [fullPage, setFullPage] = useState(false);
   const [fileType, setFileType] = useState({ id: 1, name: "png" });
   const [deviceToggle, setDeviceToggle] = useState(false);
@@ -58,7 +61,7 @@ export default function Home() {
     device,
     url,
     upload,
-    disableJS,
+    json,
     fullPage,
     fileType,
   ]);
@@ -68,8 +71,8 @@ export default function Home() {
       case "upload":
         setUpload(bool);
         break;
-      case "disable-js":
-        setDisableJS(bool);
+      case "json":
+        setJson(bool);
         break;
       case "full-page":
         setFullPage(bool);
@@ -98,7 +101,7 @@ export default function Home() {
   };
 
   const assembleQuery = () => {
-    let newQuery = `/api/screenshot?url=https://${url}`;
+    let newQuery = `https://screenshotify.vercel.app/api/screenshot?url=https://${url}`;
     if (deviceToggle) {
       newQuery += `&device=${device.id}`;
     }
@@ -108,8 +111,8 @@ export default function Home() {
     if (fileType.name != "png") {
       newQuery += `&filetype=${fileType.name}`;
     }
-    if (disableJS) {
-      newQuery += "&enablejs=false";
+    if (json) {
+      newQuery += "&json=true";
     }
     if (upload) {
       newQuery += "&upload=true";
@@ -127,15 +130,16 @@ export default function Home() {
       <Head>
         <title>Screenshotify</title>
         <link rel="icon" href="favicon.ico" />
-      </Head>
-      <div className="max-w-6xl mx-auto flex flex-col items-center justify-center py-16">
-      <h1 className="text-4xl mb-6 font-semibold text-gray-800">
-        Try it out live
-      </h1>
-      <div className=" max-w-6xl w-auto  bg-gray-100 p-5 border rounded-lg transition-transform">
-        <h1 className="text-xl mb-4 font-medium text-gray-700">
-          Build your API query
-        </h1>
+      </Head>  
+      <CTA/>
+      
+     
+      <div id="demo" className="max-w-6xl mx-auto flex flex-col items-center  py-16 sm:py-24 lg:py-32  ">
+      <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">LIVE DEMO</h2>
+          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-6">
+            Build your API query
+          </p>
+      <div  className=" max-w-7xl w-auto  bg-gray-100 p-5 border rounded-lg transition-transform">
 
         <InputURL label={"URL"} update={setUrl} />
 
@@ -168,7 +172,7 @@ export default function Home() {
         />
         <button
           onClick={() => setOpen(!open)}
-          className=" mt-3 inline-flex items-center px-2.5 py-2 border border-transparent text-sm font-medium tracking-wide rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className=" mt-3 inline-flex items-center px-2.5 py-2 border border-transparent text-sm font-medium tracking-wide rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
           {open ? "Hide advanced options" : "Show advanced options"}
         </button>
@@ -182,7 +186,7 @@ export default function Home() {
             />
             <Radio
               upload={upload}
-              disableJS={disableJS}
+              json={json}
               fullPage={fullPage}
               update={updateOptions}
             />
@@ -202,7 +206,7 @@ export default function Home() {
             id="about"
             name="about"
             rows={3}
-            className=" shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+            className=" shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md"
           />
         </div>
 
@@ -212,7 +216,7 @@ export default function Home() {
               navigator.clipboard.writeText(query);
             }}
             type="button"
-            className="inline-flex items-center px-2.5 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-2.5 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Copy URL to Clipboard
           </button>
@@ -227,7 +231,7 @@ export default function Home() {
                     getImg();
                   }
             }
-            className=" inline-flex items-center px-2.5 py-2 border border-transparent text-sm font-medium tracking-wide rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className=" inline-flex items-center px-2.5 py-2 border border-transparent text-sm font-medium tracking-wide rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             {loading ? (
               <svg
@@ -259,7 +263,10 @@ export default function Home() {
           </button>
         </div>
       </div>
+      
       </div>
+      <Features/>
+      <Footer/>
     </div>
   );
 }

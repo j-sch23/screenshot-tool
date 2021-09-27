@@ -1,6 +1,6 @@
 export default function BasicInput(props) {
   return (
-    <div className="bg-white border border-gray-300 rounded-md px-3 py-1 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600 flex-grow ">
+    <div className="bg-white border border-gray-300 rounded-md px-3 py-1 shadow-sm focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600 flex-grow ">
       <label htmlFor="name" className="block text-xs font-medium text-gray-900">
         {props.label}
       </label>
