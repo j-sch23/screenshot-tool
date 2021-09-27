@@ -16,6 +16,7 @@ export default function ParamsTable(props) {
               <tbody className="">
                 <td className=" py-2 text-sm ">
                   <code>{data.param}</code>
+                  <p className="text-xs">{data.description}</p>
                 </td>
                 <td className="py-2 text-sm ">{data.type}</td>
                 <td className="py-2 text-sm italic ">{data.required}</td>{" "}
