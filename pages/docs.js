@@ -7,13 +7,13 @@ const endpoints = [
     path: "/screenshot",
     type: "GET",
     params: [
-      { param: "url", type: "string", required: "required", description: "URL to website you want to screenshot. URL must be prepended with 'https://'." },
+      { param: "url", type: "string", required: "required", description: "Address must be secured with https." },
       { param: "filetype", type: "string", required: "optional", description: "png/jpeg. Defaults to png." },
-      { param: "height", type: "integer", required: "optional", description: "Height in pixels." },
-      { param: "width", type: "integer", required: "optional", description: "Width in pixels." },
+      { param: "height", type: "integer", required: "optional", description: "Height in px." },
+      { param: "width", type: "integer", required: "optional", description: "Width in px." },
       { param: "fullpage", type: "boolean", required: "optional", description: "Takes sreenshot of entire scrollable page." },
-      { param: "upload", type: "boolean", required: "optional", description: "Uploads screenshot to cloud. Defaults to true when json reponse is enabled." },
-      { param: "json", type: "boolean", required: "optional", description: "Returns json response." },
+      { param: "upload", type: "boolean", required: "optional", description: "Uploads screenshot to cloud. Defaults to true when json is enabled." },
+      { param: "json", type: "boolean", required: "optional", description: "Returns json object." },
     ],
     example_request:
       "https://screenshotify.vercel.app/api?url=https://www.example.com&width=1920&height=1080&json=true",
@@ -30,7 +30,7 @@ const endpoints = [
       url: "https://res.cloudinary.com/dxgbphyhg/image/upload/v1632708760/aegwap2dx91xq9pb50sd.png"
       },
     short_description: "takes screenshot of a website",
-    body: "Capture images of websites as jpeg/png formated images.",
+    body: "Capture screenshots of websites as jpeg/png formated images.",
   },
   
 
