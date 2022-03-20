@@ -130,6 +130,7 @@ export default function Home() {
       <Head>
         <title>Screenshotify | Website screenshot API</title>   
         <link rel="icon" href="favicon.ico" />
+        <meta name="google-site-verification" content="sou_jHkVU7WYk11BY4AlQyeo4sW_u0pYS3qVnMKBEeA" />
         <meta name="description" content="A free API for taking programmatic screenshots of websites in seconds. Support for JPG and PNG formats and optional cloud hosting." key="desc" />
         <meta property="og:title" content="Screenshotify | Website screenshot API" />
         <meta
