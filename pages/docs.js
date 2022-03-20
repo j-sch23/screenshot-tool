@@ -40,9 +40,19 @@ const endpoints = [
 export default function Docs() {
   return (
     <div className="flex flex-col  min-h-screen  bg-gray-50">
-      <Head>
-        <title>Screenshotify | Docs</title>
+     <Head>
+        <title>Screenshotify | Docs</title>   
         <link rel="icon" href="favicon.ico" />
+        <meta name="description" content="Screenshotify API documentation. Intuitive query builder and options for crafting a HD screenshot API request." key="desc" />
+        <meta property="og:title" content="Screenshotify | API Docs" />
+        <meta
+          property="og:description"
+          content="Screenshotify API documentation. Intuitive query builder and options for crafting a HD screenshot API request."
+        />
+        <meta
+          property="og:image"
+          content="https://vercel.com/ddc90917-1154-49d1-a259-e8f4c18bcc47"
+        />
       </Head>
       <div className="bg-gray-50">
        <Navigation active="Docs"/>
