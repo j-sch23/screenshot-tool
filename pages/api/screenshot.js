@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
           const page = await context.newPage()
           let device = query.device ? devices.find(x => x.name === query.device) : null;
           await page.setViewportSize({height: (device ? device.height : parseInt(query.height)), width: (device ? device.width : parseInt(query.width))});
-          await page.goto(query.url, {waitUntil: "networkidle0"})
+          await page.goto(query.url)
           const screenshot = await page.screenshot({  
           type: query.filetype ? req.query.filetype : 'png',
           fullPage: query.fullpage === 'true' ? true : false })
