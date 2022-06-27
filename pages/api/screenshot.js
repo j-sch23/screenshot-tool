@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
             );
           } else {
             res.setHeader("Content-Type", "image/png")
+            res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
             res.status(200).send(screenshot)
           }
       } else throw "Please provide a valid url"
